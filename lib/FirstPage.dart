@@ -10,7 +10,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>  {
+class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String _myHomePageTitle;
 
@@ -21,13 +21,13 @@ class _MyHomePageState extends State<MyHomePage>  {
     });
   }
 
-  void _decreasedCounter(){
+  void _decreasedCounter() {
     setState(() {
       _counter--;
     });
   }
 
-  void _goToSecondPage(){
+  void _goToSecondPage() {
     Navigator.of(context).pushNamed('/second');
   }
 
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage>  {
       drawer: Drawer(
         child: ListView.builder(
           itemCount: routes.length + 1,
-          itemBuilder: (context, index){
+          itemBuilder: (context, index) {
             return createDrawer(index);
           },
         ),
@@ -89,21 +89,19 @@ class _MyHomePageState extends State<MyHomePage>  {
       ],
     );
   }
-  
-  Widget createDrawer(int index){
-    if(index == 0){
+
+  Widget createDrawer(int index) {
+    if (index == 0) {
       return DrawerHeader(
-          child: Text('Tune Talk'),
-        decoration: BoxDecoration(
-          color: Colors.red
-        ),
+        child: Text('Tune Talk'),
+        decoration: BoxDecoration(color: Colors.red),
       );
     }
 
     return ListTile(
       selectedTileColor: Colors.redAccent,
       title: Text('Index $index'),
-      onTap:(){
+      onTap: () {
         Navigator.of(context).pushNamed(routeList.elementAt(index - 1));
       },
     );

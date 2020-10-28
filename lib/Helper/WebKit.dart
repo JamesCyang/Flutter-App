@@ -3,19 +3,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebKit extends StatefulWidget{
+class WebKit extends StatefulWidget {
   WebKit({Key key, this.url, this.title}) : super(key: key);
 
   final String url, title;
+
   @override
   WebKitState createState() => WebKitState();
 }
 
-class WebKitState extends State<WebKit>{
+class WebKitState extends State<WebKit> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    if(Platform.isAndroid){
+    if (Platform.isAndroid) {
       WebView.platform = SurfaceAndroidWebView();
     }
   }
@@ -27,9 +28,9 @@ class WebKitState extends State<WebKit>{
     // TODO: implement build
 
     return Scaffold(
-        appBar: AppBar(
-           title: Text(title),
-        ),
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: WebView(
         initialUrl: url,
       ),

@@ -154,7 +154,7 @@ class _MySecondPageState extends State<MySecondPage> {
   }
 
   Widget displayError(String errorMsg){
-    return normalAlertMessage(title: "$errorMsg", buttonText1: "Ok", buttonAction1: (){
+    return normalAlertMessage('gg',title: "$errorMsg", buttonText1: "Ok", buttonAction1: (){
       setState(() {
         error = !error;
       });

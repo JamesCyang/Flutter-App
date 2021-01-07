@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/FirstPage.dart';
 import 'package:flutter_app/SecondPage.dart';
+import 'package:flutter_app/third_page.dart';
 
 final routes = <String, WidgetBuilder>{
   routeList.elementAt(0): (BuildContext context) =>
       MyHomePage(title: 'Counter Page'),
   routeList.elementAt(1): (BuildContext context) =>
-      MySecondPage(title: 'Promotions')
+      MySecondPage(title: 'Promotions'),
+  routeList.elementAt(2): (BuildContext context) =>
+      MyThirdPage(title: 'Table View')
 };
-final routeList = ['/home', '/second'];
+final routeList = ['/home', '/second', '/third'];
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

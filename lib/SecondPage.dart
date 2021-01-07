@@ -26,7 +26,6 @@ class _MySecondPageState extends State<MySecondPage> {
   //MAIN UI
   @override
   Widget build(BuildContext context) {
-
     print("_MySecondPageState");
     return Scaffold(
         appBar: AppBar(
@@ -37,12 +36,13 @@ class _MySecondPageState extends State<MySecondPage> {
   }
 
   displayBody() {
-    return !_displayLoading ? displayPromotionViewOrNoData() : Center(child: CircularProgressIndicator());
+    return !_displayLoading ? displayPromotionViewOrNoData() : Center(
+        child: CircularProgressIndicator());
   }
 
-  displayPromotionViewOrNoData(){
+  displayPromotionViewOrNoData() {
     bool gotData = selfCarePromotionList.isEmpty && dealerPromotionList.isEmpty;
-    return  gotData ? displayNoData() : displayPromotionCardView();
+    return gotData ? displayNoData() : displayPromotionCardView();
   }
 
   displayNoData() {
@@ -63,10 +63,13 @@ class _MySecondPageState extends State<MySecondPage> {
     // return ListView(children: createEachCardView());
     //part 2
     return RefreshIndicator(
-        onRefresh: selfCarePromotionList.isNotEmpty ? _getSelfCarePromotionData : _getDealerCarePromotionData,
+        onRefresh: selfCarePromotionList.isNotEmpty
+            ? _getSelfCarePromotionData
+            : _getDealerCarePromotionData,
         child: ListView.builder(
           physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: selfCarePromotionList.isNotEmpty ? selfCarePromotionList.length : dealerPromotionList.length,
+          itemCount: selfCarePromotionList.isNotEmpty ? selfCarePromotionList
+              .length : dealerPromotionList.length,
           itemBuilder: (BuildContext context, int position) {
             return createEachCardView(position);
           },
@@ -108,18 +111,18 @@ class _MySecondPageState extends State<MySecondPage> {
   Widget createEachCardView(int position) {
     var obj, link, title, imageUrl;
 
-    if (selfCarePromotionList.isNotEmpty){
+    if (selfCarePromotionList.isNotEmpty) {
       //do selfcare
       obj = selfCarePromotionList.elementAt(position);
       imageUrl = FadeInImage.assetNetwork(
-        placeholder: circularProgressIndicatorSmall, image: obj.imageUrl);
+          placeholder: circularProgressIndicatorSmall, image: obj.imageUrl);
       link = obj.url;
       title = obj.title;
-    }else{
+    } else {
       //do dealer
       obj = dealerPromotionList.elementAt(position);
       imageUrl = FadeInImage.assetNetwork(
-        placeholder: circularProgressIndicatorSmall, image: obj.banner);
+          placeholder: circularProgressIndicatorSmall, image: obj.banner);
       link = obj.bannerUrl;
       title = obj.title;
     }
@@ -145,7 +148,8 @@ class _MySecondPageState extends State<MySecondPage> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => WebKit(url: link ?? "", title: title ?? "")));
+                  builder: (context) =>
+                      WebKit(url: link ?? "", title: title ?? "")));
         } else {
           return error = !error;
         }
@@ -153,8 +157,9 @@ class _MySecondPageState extends State<MySecondPage> {
     );
   }
 
-  Widget displayError(String errorMsg){
-    return normalAlertMessage('gg',title: "$errorMsg", buttonText1: "Ok", buttonAction1: (){
+  Widget displayError(String errorMsg) {
+    return normalAlertMessage(
+        'gg', title: "$errorMsg", buttonText1: "Ok", buttonAction1: () {
       setState(() {
         error = !error;
       });
@@ -178,6 +183,10 @@ class _MySecondPageState extends State<MySecondPage> {
         child: Icon(Icons.card_membership),
         backgroundColor: Colors.red,
         foregroundColor: Colors.yellow,
+      ),
+      FloatingActionButton(
+          onPressed: _goToThirdPage,
+          child: Icon(Icons.table_chart)
       )
     ];
   }
@@ -190,9 +199,13 @@ class _MySecondPageState extends State<MySecondPage> {
     });
   }
 
-  _resetAllList(){
+  _resetAllList() {
     selfCarePromotionList.clear();
     dealerPromotionList.clear();
+  }
+
+  _goToThirdPage() {
+    Navigator.of(context).pushNamed('/third');
   }
 
   Future<void> _getSelfCarePromotionData() async {
@@ -201,7 +214,7 @@ class _MySecondPageState extends State<MySecondPage> {
     var response = await selfCarePromotionApi();
     if (response != null) {
       _setLoading();
-      if(response == 200){
+      if (response == 200) {
         errorMessage = "List is empty";
         error = !error;
         return;
@@ -211,7 +224,7 @@ class _MySecondPageState extends State<MySecondPage> {
   }
 
   Future<void> _getDealerCarePromotionData() async {
-     _resetAllList();
+    _resetAllList();
     _setLoading();
     var response = await dealerPromotionApi();
     if (response != null) {

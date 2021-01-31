@@ -9,7 +9,7 @@ Future<dynamic> selfCarePromotionApi() async {
   var client = http.Client();
   var response = await client.get(url);
 
-  if (response.statusCode != 200) {
+  if (response.statusCode == 200) {
     Map<String, dynamic> jsonResponse = jsonDecode(response.body);
     List<dynamic> data = jsonResponse['deals'];
     if (data != null && data.isNotEmpty) {
@@ -17,7 +17,7 @@ Future<dynamic> selfCarePromotionApi() async {
     }
     return [];
   } else {
-    return response.statusCode;
+    return 500;
   }
 }
 

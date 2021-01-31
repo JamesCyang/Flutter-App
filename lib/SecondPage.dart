@@ -70,7 +70,8 @@ class _MySecondPageState extends State<MySecondPage> {
           physics: const AlwaysScrollableScrollPhysics(),
           itemCount: selfCarePromotionList.isNotEmpty ? selfCarePromotionList
               .length : dealerPromotionList.length,
-          itemBuilder: (BuildContext context, int position) {
+          itemBuilder: (BuildContext context, int position)
+          {
             return createEachCardView(position);
           },
         ));
@@ -214,7 +215,7 @@ class _MySecondPageState extends State<MySecondPage> {
     var response = await selfCarePromotionApi();
     if (response != null) {
       _setLoading();
-      if (response == 200) {
+      if (response == 500) {
         errorMessage = "List is empty";
         error = !error;
         return;

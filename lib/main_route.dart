@@ -1,8 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/FirstPage.dart';
-import 'package:flutter_app/SecondPage.dart';
-import 'package:flutter_app/third_page.dart';
+import 'package:flutter_app/firebase_phone_auth_page.dart';
+import 'package:flutter_app/my_home_page.dart';
+import 'package:flutter_app/api_call_page.dart';
+import 'package:flutter_app/role_permission_page.dart';
 
 final routes = <String, WidgetBuilder>{
   routeList.elementAt(0): (BuildContext context) =>
@@ -10,7 +10,9 @@ final routes = <String, WidgetBuilder>{
   routeList.elementAt(1): (BuildContext context) =>
       MySecondPage(title: 'Promotions'),
   routeList.elementAt(2): (BuildContext context) =>
-      MyThirdPage(title: 'Table View')
+      MyThirdPage(title: 'Table View'),
+  routeList.elementAt(3): (BuildContext context) =>
+      FirebasePhoneAuth(title: 'Authentication'),
 };
 final routeList = ['/home', '/second', '/third'];
 

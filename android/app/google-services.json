@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "263355328381",
+    "project_id": "solaru-testing",
+    "storage_bucket": "solaru-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263355328381:android:72ba25ef85da530b7dce14",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263355328381-26hr77fj44rob9jmmu2q68hvo35p046a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAIND-pcWdj6j5Q7VofBrbbEDu8lD9vzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263355328381-26hr77fj44rob9jmmu2q68hvo35p046a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
